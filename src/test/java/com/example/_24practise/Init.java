@@ -43,29 +43,29 @@ public class Init {
 
         car = Car.builder().brand("Opel").model("Astra").bestDiscount(10).pricePerDay(100).build();
         carRepo.save(car);
-        member = Member.builder().firstName("fName").lastName("lName").approved(true).city("city")
-                .ranking(100).street("street").zip(2000).build();
+        member = Member.builder().firstName("Tim").lastName("Tom").approved(true).city("city")
+                .ranking(80).street("street").zip(1000).build();
         memberRepo.save(member);
-        reservation = Reservation.builder().reservationDate(LocalDate.of(2022,12,15))
-                .rentalDate(LocalDate.of(2022,12,30)).car(car).member(member).build();
+        reservation = Reservation.builder().reservationDate(LocalDate.now())
+                .rentalDate(LocalDate.of(2023,12,30)).car(car).member(member).build();
         reservationRepo.save(reservation);
 
-        car = Car.builder().brand("Benz").model("c220").bestDiscount(10).pricePerDay(100).build();
+        car = Car.builder().brand("Benz").model("c220").bestDiscount(20).pricePerDay(200).build();
         carRepo.save(car);
-        member = Member.builder().firstName("fName2").lastName("lName2").approved(true).city("city")
-                .ranking(100).street("street").zip(2000).build();
+        member = Member.builder().firstName("Ben").lastName("Bon").approved(true).city("city2")
+                .ranking(90).street("street2").zip(2000).build();
         memberRepo.save(member);
-        reservation = Reservation.builder().reservationDate(LocalDate.of(2022,12,15))
-                .rentalDate(LocalDate.of(2022,12,31)).car(car).member(member).build();
+        reservation = Reservation.builder().reservationDate(LocalDate.now())
+                .rentalDate(LocalDate.of(2023,12,31)).car(car).member(member).build();
         reservationRepo.save(reservation);
 
-        car = Car.builder().brand("Subaru").model("Impreza").bestDiscount(10).pricePerDay(100).build();
+        car = Car.builder().brand("Subaru").model("Impreza").bestDiscount(30).pricePerDay(300).build();
         carRepo.save(car);
-        member = Member.builder().firstName("fName3").lastName("lName3").approved(true).city("city")
-                .ranking(100).street("street").zip(2000).build();
+        member = Member.builder().firstName("Sam").lastName("Son").approved(true).city("city3")
+                .ranking(100).street("street3").zip(3000).build();
         memberRepo.save(member);
-        reservation = Reservation.builder().reservationDate(LocalDate.of(2022,12,15))
-                .rentalDate(LocalDate.of(2022,12,29)).car(car).member(member).build();
+        reservation = Reservation.builder().reservationDate(LocalDate.now())
+                .rentalDate(LocalDate.of(2023,12,29)).car(car).member(member).build();
         reservationRepo.save(reservation);
 
     }

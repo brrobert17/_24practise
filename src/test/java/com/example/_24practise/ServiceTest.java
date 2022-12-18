@@ -9,6 +9,7 @@ import com.example._24practise.repo.ReservationRepo;
 import com.example._24practise.service.CarService;
 import com.example._24practise.service.MemberService;
 import com.example._24practise.service.ReservationService;
+import com.example._24practise.service.exception.CarNotAvailableException;
 import com.example._24practise.service.exception.ReservationNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,7 +76,7 @@ public class ServiceTest {
     }
 
     @Test
-    void addReservation() {
+    void addReservation() throws CarNotAvailableException {
         reservation = Reservation.builder().reservationDate(LocalDate.of(2022,12,15))
                 .rentalDate(LocalDate.of(2022,12,28)).car(car).member(member).build();
         Integer id = reservationService.create(reservation).getId();
@@ -103,13 +104,13 @@ public class ServiceTest {
     }
 
     @Test
-    public void testEdit() throws ReservationNotFoundException {
+    public void testEdit() throws ReservationNotFoundException, CarNotAvailableException {
         List<Reservation> reservations = reservationRepo.findAll();
         int reservationIndex = reservations.size() - 1;
         Reservation reservation = reservations.get(reservationIndex);
         Integer id = reservation.getId();
         reservation.setReservationDate(LocalDate.of(2022,11,11));
-        reservationRepo.save(reservation);
+        reservationService.update(id,reservation);
         Assertions.assertThat(reservationRepo.findById(id).get().getReservationDate()).isEqualTo(LocalDate.of(2022,11,11));
     }
 
